@@ -7,7 +7,10 @@ __pycache__/
 .venv/
 .env/
 .uv/
+*.env
 
+/data.txt
+/temp.js
 # Dependency directories
 *.egg-info/
 pip-wheel-metadata/
