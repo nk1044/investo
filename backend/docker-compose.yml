@@ -11,7 +11,7 @@ services:
       POSTGRES_USER: TestUser
       POSTGRES_PASSWORD: TestUserPassword
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U TestUser -d TestDB"]
       interval: 10s
@@ -38,8 +38,5 @@ services:
       DATABASE_URL: postgresql://TestUser:TestUserPassword@db:5432/TestDB
     command: >
       sh -c "prisma generate && 
-             prisma migrate dev --name init --preview-feature &&
+             prisma db push --accept-data-loss &&
              uvicorn main:app --reload --host 0.0.0.0 --port 8000"
-
-volumes:
-  pg_data:
