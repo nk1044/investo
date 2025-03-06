@@ -1,18 +1,28 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:database.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
   provider             = "prisma-client-py"
-  recursive_type_depth = 5
 }
 
 model Stock {
-  id        Int      @id @default(autoincrement())
-  symbol    String
-  name      String
-  price     Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int    @id @default(autoincrement())
+  instrument String @unique
+  data       StockData[] @relation("StockToStockData")
+}
+
+model StockData {
+  id         Int      @id @default(autoincrement())
+  datetime   DateTime @unique
+  close      Float
+  high       Float
+  low        Float
+  open       Float
+  volume     Int
+  stockId    Int
+  instrument Stock @relation("StockToStockData", fields: [stockId], references: [id])
+  
+  @@map("stock_data")
 }

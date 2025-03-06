@@ -1,3 +1,66 @@
-*.venv
-*.env
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+.env/
+.uv/
+
+# Dependency directories
+*.egg-info/
+pip-wheel-metadata/
+dist/
+build/
+
+# Prisma client and migrations
+prisma/migrations/
+prisma/client.py
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & Debugging
+logs/
+*.log
+debug.log
+
+# Environment variables & credentials
+.env
+credentials.json
+
+# Database & Cache files
+*.db
+*.sqlite3
+*.sqlite
+*.pgdata
+
+# Uvicorn logs
+*.pid
+*.sock
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker
+docker-compose.override.yml
+.Dockerfile.swp
+
+# Coverage reports
+.coverage
+htmlcov/
+*.cover
+
+# pytest cache
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+
+# Temporary files
+tmp/
+temp/
