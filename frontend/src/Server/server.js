@@ -10,6 +10,12 @@ const getAllStocks = async () => {
   return response?.data;
 }
 
+const getStockdata = async (instrument) => {
+  const response = await axios.get(`${backendUrl}/get-stock-data?instrument=${instrument}`);
+  return response?.data?.data;
+}
+
 export {
     getAllStocks,
+    getStockdata
 }
