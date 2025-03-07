@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from prisma import Prisma
 from typing import List
+import numpy as np
 
 app = FastAPI()
 db = Prisma()
@@ -98,3 +99,40 @@ async def add_stock_data(data: StockDataCreate):
     )
     
     return {"message": "Stock data created successfully", "data": new_stock_data}
+
+
+@app.get("/strategy/performance")
+async def get_strategy_performance(instrument: str):
+    stock = await db.stock.find_unique(where={"instrument": instrument})
+    
+    if not stock:
+        raise HTTPException(status_code=404, detail="Stock not found")
+
+    stock_data = await db.stockdata.find_many(where={"stockId": stock.id})
+    if not stock_data:
+        raise HTTPException(status_code=404, detail="Stock data not found")
+   
+    print("Stock Data:", stock_data[0].close)
+    close_prices = np.array([entry.close for entry in stock_data])
+    window_size = 3
+    weights = np.ones(window_size) / window_size
+    moving_avg = np.convolve(close_prices, weights, mode="valid")
+
+
+    min_price = np.inf
+    min_index = 0 
+    max_profit = 0 
+    buy_index = 0 
+    sell_index = 0
+
+    for i in range(len(close_prices)):
+        if close_prices[i] < min_price:
+            min_price = close_prices[i]
+            min_index = i
+        elif close_prices[i] - min_price > max_profit:
+            max_profit = close_prices[i] - min_price
+            buy_index = min_index
+            sell_index = i
+    BestBuySell = {"BuyIndex": buy_index, "SellIndex": sell_index, "Profit": max_profit}
+    return {"MovingAverage": moving_avg.tolist(), "BestBuySell": BestBuySell}
+

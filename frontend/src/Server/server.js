@@ -15,7 +15,14 @@ const getStockdata = async (instrument) => {
   return response?.data?.data;
 }
 
+const getStockPerformance = async (instrument) => {
+  const response = await axios.get(`${backendUrl}/strategy/performance?instrument=${instrument}`);
+  console.log(response?.data);
+  return response?.data;
+}
+
 export {
     getAllStocks,
-    getStockdata
+    getStockdata,
+    getStockPerformance
 }

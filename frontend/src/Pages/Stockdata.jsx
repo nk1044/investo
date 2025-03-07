@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getStockdata } from '../Server/server';
+import { getStockdata, getStockPerformance } from '../Server/server';
 
 function Stockdata() {
     const [stockdata, setStockdata] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { instrument } = useParams();
+    const [MovingAverage, setMovingAverage] = useState([]);
+    const [bestBuyIndex, setBestBuyIndex] = useState(null);
+    const [bestSellIndex, setBestSellIndex] = useState(null);
+    const [profit, setProfit] = useState(0);
 
     const fetchStocks = async () => {
         try {
@@ -20,8 +24,24 @@ function Stockdata() {
         }
     };
 
+    const fetchStockPerformance = async () => {
+        try {
+            const data = await getStockPerformance(instrument);
+            // console.log(data);
+            setMovingAverage(data.MovingAverage);
+            setBestBuyIndex(data.BestBuySell?.BuyIndex);
+            setBestSellIndex(data.BestBuySell?.SellIndex);
+            setProfit(data.BestBuySell?.Profit);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
         fetchStocks();
+        fetchStockPerformance();
         // console.log(instrument);
     }, [instrument]);
 
