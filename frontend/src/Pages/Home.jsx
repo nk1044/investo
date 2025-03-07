@@ -7,9 +7,8 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-neutral-900 text-neutral-100 flex flex-col">
-      {/* Header */}
 
-      {/* Hero Section */}
+
       <section className="relative h-screen flex items-center justify-center pt-5">
         {/* Background with overlay gradient */}
         <div className="absolute inset-0 z-0">
@@ -60,10 +59,11 @@ function Home() {
 
       </section>
 
-      {/* Features Section */}
+
       <main className="flex-grow px-6 py-6 bg-gradient-to-b from-neutral-900 to-neutral-950">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
+
+
           <div className="text-center mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium text-blue-400 bg-blue-400/10 rounded-full mb-4">Features</span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -74,9 +74,10 @@ function Home() {
             </p>
           </div>
 
-          {/* Features Grid */}
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature Card 1 */}
+
+
             <div className="group bg-neutral-800/60 backdrop-blur-sm border border-neutral-700/50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:border-blue-500/30 hover:translate-y-[-5px]">
               <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20">
                 <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,16 +89,17 @@ function Home() {
                 Access live market information with millisecond updates. Stay ahead with the latest stock movements, news alerts, and market trends.
               </p>
               <div className="mt-6 pt-6 border-t border-neutral-700/50">
-                <a href="#" className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium">
+                <div className="inline-flex items-center cursor-pointer text-blue-400 hover:text-blue-300 font-medium"
+                onClick={() => navigate('/stocks')}>
                   Learn more
                   <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
-                </a>
+                </div>
               </div>
             </div>
 
-            {/* Feature Card 2 */}
+
             <div className="group bg-neutral-800/60 backdrop-blur-sm border border-neutral-700/50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:border-purple-500/30 hover:translate-y-[-5px]">
               <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/20">
                 <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,16 +111,18 @@ function Home() {
                 Make data-driven decisions with our advanced analytics tools. Visualize trends, identify patterns, and get actionable insights.
               </p>
               <div className="mt-6 pt-6 border-t border-neutral-700/50">
-                <a href="#" className="inline-flex items-center text-purple-400 hover:text-purple-300 font-medium">
+                <div className="inline-flex cursor-pointer items-center text-purple-400 hover:text-purple-300 font-medium"
+                onClick={() => navigate('/stocks')}>
                   Learn more
                   <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
-                </a>
+                </div>
               </div>
             </div>
 
-            {/* Feature Card 3 */}
+            
+
             <div className="group bg-neutral-800/60 backdrop-blur-sm border border-neutral-700/50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:border-cyan-500/30 hover:translate-y-[-5px]">
               <div className="bg-gradient-to-br from-cyan-500 to-cyan-600 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-cyan-500/20">
                 <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,12 +134,13 @@ function Home() {
                 Monitor your investments from anywhere, anytime. Our responsive platform works seamlessly across desktop, tablet, and mobile devices.
               </p>
               <div className="mt-6 pt-6 border-t border-neutral-700/50">
-                <a href="#" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+                <div className="inline-flex cursor-pointer items-center text-cyan-400 hover:text-cyan-300 font-medium"
+                onClick={() => navigate('/stocks')}>
                   Learn more
                   <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -144,18 +149,14 @@ function Home() {
         </div>
       </main>
 
-      {/* Footer */}
+
       <footer className="bg-neutral-800 py-8 mt-auto">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-blue-400 font-bold text-xl mb-2">StockTracker</h3>
-              <p className="text-neutral-400">&copy; 2025 StockTracker. All rights reserved.</p>
-            </div>
+          <div className="flex md:flex-row justify-between items-center">
 
-            <div className="text-center md:text-right">
+            <div className="text-center md:text-right flex justify-between w-full">
               <h4 className="text-white font-medium mb-2">Developed by Neeraj Kumar</h4>
-              <div className="flex items-center justify-center md:justify-end mt-3 space-x-4">
+              <div className="flex items-center justify-center md:justify-end space-x-4">
                 <a href="https://github.com/nk1044" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-blue-400 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd"></path>
@@ -176,11 +177,9 @@ function Home() {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-neutral-700 text-neutral-500 text-sm text-center md:text-left">
-            <p>Built with React and Tailwind CSS</p>
-          </div>
         </div>
       </footer>
+
     </div>
   );
 }

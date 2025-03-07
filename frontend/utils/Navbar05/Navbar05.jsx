@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const defaultLinks = [
   { name: "Home", link: "/" },
   { name: "Stocks", link: "/stocks" },
-  { name: "About", link: "/about" },
-  { name: "Contact", link: "/contact" },
+  { name: "About", link: "/" },
+  { name: "Contact", link: "/" },
 ];
 
 const Navbar05 = ({ links = defaultLinks }) => {

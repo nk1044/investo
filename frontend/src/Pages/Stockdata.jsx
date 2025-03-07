@@ -25,7 +25,7 @@ function Stockdata() {
         // console.log(instrument);
     }, [instrument]);
 
-    // Format date function
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleString();
@@ -34,7 +34,7 @@ function Stockdata() {
     return (
         <div className="min-h-screen bg-neutral-900 text-neutral-100 pt-24 pb-10 px-4 md:px-6">
             <div className="max-w-6xl mx-auto">
-                {/* Header Section */}
+
                 <div className="text-center mb-12">
                     <span className="inline-block px-3 py-1 text-sm font-medium text-blue-400 bg-blue-400/10 rounded-full mb-4">Stock Details</span>
                     <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
@@ -45,7 +45,7 @@ function Stockdata() {
                     </p>
                 </div>
 
-                {/* Analytics Section */}
+
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                     {!loading && !error && stockdata.length > 0 && (
                         <>
@@ -137,7 +137,7 @@ function Stockdata() {
                     )}
                 </div>
 
-                {/* Stock List Section */}
+
                 <div className="bg-neutral-800/40 rounded-2xl shadow-xl border border-neutral-700/50 overflow-hidden">
                     <div className="p-6 border-b border-neutral-700">
                         <div className="flex justify-between items-center">
