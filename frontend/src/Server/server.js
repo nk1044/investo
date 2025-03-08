@@ -14,11 +14,21 @@ const getStockdata = async (instrument) => {
   const response = await axios.get(`${backendUrl}/get-stock-data?instrument=${instrument}`);
   return response?.data?.data;
 }
-
 const getStockPerformance = async (instrument) => {
-  const response = await axios.get(`${backendUrl}/strategy/performance?instrument=${instrument}`);
-  console.log(response?.data);
-  return response?.data;
+  try {
+    const response = await axios.get(`${backendUrl}/strategy/performance`, {
+      params: { instrument },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: false,
+    });
+    console.log("data", response);
+    return response?.data;
+  } catch (error) {
+    console.error("Error fetching stock performance:", error);
+    throw error;
+  }
 }
 
 export {

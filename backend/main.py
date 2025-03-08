@@ -9,16 +9,14 @@ import numpy as np
 app = FastAPI()
 db = Prisma()
 
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173"
-]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Accept", "Authorization", "X-Requested-With"],
+    expose_headers=["Content-Type", "Content-Length"],
+    max_age=600,
 )
 
 @app.on_event("startup")
@@ -101,7 +99,7 @@ async def add_stock_data(data: StockDataCreate):
     return {"message": "Stock data created successfully", "data": new_stock_data}
 
 
-@app.get("/strategy/performance")
+@app.get("/strategy")
 async def get_strategy_performance(instrument: str):
     stock = await db.stock.find_unique(where={"instrument": instrument})
     
