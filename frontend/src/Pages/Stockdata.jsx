@@ -41,7 +41,7 @@ function Stockdata() {
 
     useEffect(() => {
         fetchStocks();
-        fetchStockPerformance();
+        // fetchStockPerformance();
         // console.log(instrument);
     }, [instrument]);
 

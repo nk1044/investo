@@ -2,10 +2,13 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# Install PostgreSQL client for pg_isready
+RUN apt-get update && apt-get install -y postgresql-client && apt-get clean
+
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && pip install prisma
 
 # Copy Prisma schema and backend code
 COPY prisma /app/prisma
@@ -17,4 +20,5 @@ RUN chmod +x /app/wait-for-db.sh
 
 EXPOSE 8000
 
-CMD [ "sh", "-c", "/app/wait-for-db.sh && prisma generate && prisma migrate deploy && uvicorn main:app --host 0.0.0.0 --port 8000" ]
+# Use the wait script as the entrypoint
+CMD ["/app/wait-for-db.sh"]

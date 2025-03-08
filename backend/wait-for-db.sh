@@ -8,16 +8,10 @@ until pg_isready -h db -p 5432 -U TestUser; do
   sleep 2
 done
 
-echo "Database is ready! Running Prisma migrations..."
+echo "Database is ready! Running Prisma setup..."
 
-# Ensure Prisma CLI is installed before running commands
-if ! command -v prisma &> /dev/null
-then
-    echo "Prisma CLI not found! Make sure it's installed in the container."
-    exit 1
-fi
-
-# Run Prisma migrations
+# Run Prisma commands
+prisma generate
 prisma migrate deploy
 
 echo "Starting backend..."
