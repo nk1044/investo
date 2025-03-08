@@ -4,6 +4,16 @@
 
 This assignment is to create Investo, a web application designed to help users visualize and analyze stock market data. 
 
+![image](https://github.com/user-attachments/assets/044bec5b-d479-4569-869d-29740d843ae4)
+ ---
+
+ ![image](https://github.com/user-attachments/assets/91966e69-883f-4272-8b72-4507f1426473)
+
+ ---
+
+ ![image](https://github.com/user-attachments/assets/4aeccadb-c645-4ab7-8835-f7bccc5118ef)
+
+
 ## Project Requirements
 
 This is a stock analysis web application with the following features:
